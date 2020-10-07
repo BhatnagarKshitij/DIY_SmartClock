@@ -1,0 +1,174 @@
+#define DS_pin 4
+#define STCP_pin 5
+#define SHCP_pin 6
+
+boolean registers[8];
+
+void updateRegister(){
+	digitalWrite(STCP_pin, LOW);
+	for (int i=7;i>=0;i--){
+		digitalWrite(SHCP_pin,LOW);
+		digitalWrite(DS_pin,registers[i]);
+		digitalWrite(SHCP_pin,HIGH);
+	}
+	digitalWrite(STCP_pin,HIGH);
+}
+
+void setup(){
+	pinMode(DS_pin,OUTPUT);
+	pinMode(SHCP_pin,OUTPUT);
+	pinMode(STCP_pin,OUTPUT);
+	updateRegister();
+	Serial.begin(9600);
+}
+
+void groundONE(){
+	Serial.print("Printing 1");
+	for (int i=0;i<8;i++){
+		if(i == 1 || i == 2){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+
+void groundTWO(){
+	Serial.print("Printing 2");
+	for (int i=0;i<8;i++){
+		if(i == 0 || i == 1 || i == 6 || i == 4 || i == 3){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+
+void groundTHREE(){
+	Serial.print("Printing 3");
+	for (int i=0;i<8;i++){
+		if(i == 0 || i == 1 || i == 6 || i == 2 || i == 3){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+
+void groundFOUR(){
+	Serial.print("Printing 4");
+	for (int i=0;i<8;i++){
+		if(i == 5 || i == 6 || i == 1 || i == 2){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+
+void groundFIVE(){
+	Serial.print("Printing 5");
+	for (int i=0;i<8;i++){
+		if(i == 0 || i == 5 || i == 6 || i == 2 || i == 3){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+
+void groundSIX(){
+	Serial.print("Printing 6");
+	for (int i=0;i<8;i++){
+		if( i == 0 || i == 5 || i == 4 || i == 3 || i == 2 || i == 6){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+
+void groundSEVEN(){
+	Serial.print("Printing 7");
+	for (int i=0;i<8;i++){
+		if(i == 0 || i == 1 || i == 2){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+
+void groundEIGHT(){
+	Serial.print("Printing 8");
+	for (int i=0;i<8;i++){
+		if(i == 0 || i == 5 || i == 6 || i == 2 || i == 3 || i == 4 || i == 1){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+void groundNINE(){
+	Serial.print("Printing 4");
+	for (int i=0;i<8;i++){
+		if(i == 0 || i == 5 || i == 6 || i == 1 || i == 2){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+
+void groundZERO(){
+	Serial.print("Printing 0");
+	for (int i=0;i<8;i++){
+		if(i == 0 || i == 1 || i == 2 || i == 3 || i == 4 || i == 5){
+			registers[i]=LOW;
+		}else{
+			registers[i]=HIGH;
+		}
+	}
+	updateRegister();
+	Serial.println(". . .DONE");
+}
+void loop(){
+	groundZERO();
+	delay(1000);
+	groundONE();
+	delay(1000);
+	groundTWO();
+	delay(1000);
+	groundTHREE();
+	delay(1000);
+	groundFOUR();
+	delay(1000);
+	groundFIVE();
+	delay(1000);
+	groundSIX();
+	delay(1000);
+	groundSEVEN();
+	delay(1000);
+	groundEIGHT();
+	delay(1000);
+	groundNINE();
+	delay(1000);
+}
